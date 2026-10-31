@@ -35,6 +35,7 @@ const Login = () => {
       alignItems: 'center',
       background: '#1a1a2e',
     }}>
+      {/* VIDÉO DE FOND */}
       <video
         ref={videoRef}
         autoPlay
@@ -59,6 +60,7 @@ const Login = () => {
         <source src="/loging.ogg" type="video/ogg" />
       </video>
 
+      {/* OVERLAY SOMBRE POUR LA LISIBILITÉ */}
       <div style={{
         position: 'absolute',
         top: 0,
@@ -69,17 +71,52 @@ const Login = () => {
         zIndex: 1,
       }} />
 
+      {/* TEXTE EN HAUT (Français) - EFFET VERRE DÉPOLI */}
+      <div style={{
+        position: 'absolute',
+        top: '40px',
+        left: '50%',
+        transform: 'translateX(-50%)',
+        zIndex: 3,
+        pointerEvents: 'none',
+      }}>
+        <div style={{
+          background: 'rgba(255, 255, 255, 0.1)',
+          backdropFilter: 'blur(12px)',
+          WebkitBackdropFilter: 'blur(12px)',
+          border: '1px solid rgba(255, 255, 255, 0.2)',
+          borderRadius: '50px',
+          padding: '15px 50px',
+          boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.3)',
+        }}>
+          <h1 style={{
+            color: 'white',
+            fontSize: 'clamp(1.5rem, 3vw, 2.2rem)',
+            fontWeight: '600',
+            letterSpacing: '5px',
+            textTransform: 'uppercase',
+            fontFamily: "'Inter', 'Segoe UI', sans-serif",
+            textShadow: '0 2px 10px rgba(0,0,0,0.5)',
+            margin: 0,
+            textAlign: 'center',
+            whiteSpace: 'nowrap',
+          }}>
+            Bureau numérique andremed
+          </h1>
+        </div>
+      </div>
+
+      {/* FORMULAIRE DE CONNEXION */}
       <form onSubmit={handleSubmit} style={{
         position: 'relative',
         zIndex: 2,
         background: 'rgba(255,255,255,0.92)',
-        padding: '2rem 1.5rem',
+        padding: '2.5rem 2rem',
         borderRadius: '1rem',
         boxShadow: '0 10px 25px rgba(0,0,0,0.3)',
-        width: '100%',
-        maxWidth: '360px',
+        width: '90%',
+        maxWidth: '380px',
         backdropFilter: 'blur(4px)',
-        margin: '1rem',
       }}>
         <div style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
           <img src="/logo.jpg" alt="ANDREMED" style={{ height: '45px', marginBottom: '0.5rem' }} />
@@ -101,8 +138,8 @@ const Login = () => {
           </div>
         )}
 
-        <div style={{ marginBottom: '1rem' }}>
-          <label style={{ display: 'block', fontWeight: '600', marginBottom: '0.3rem', color: '#1f2937', fontSize: '0.85rem' }}>Email</label>
+        <div style={{ marginBottom: '1.2rem' }}>
+          <label style={{ display: 'block', fontWeight: '600', marginBottom: '0.4rem', color: '#374151', fontSize: '0.85rem' }}>Email</label>
           <input
             type="email"
             value={email}
@@ -110,21 +147,31 @@ const Login = () => {
             required
             style={{
               width: '100%',
-              padding: '0.5rem 0.75rem',
+              boxSizing: 'border-box',
+              padding: '0.75rem 1rem',
               borderRadius: '0.5rem',
-              border: '2px solid #d1d5db',
+              border: '1px solid #d1d5db',
               color: '#1f2937',
-              fontSize: '0.9rem',
+              fontSize: '0.95rem',
               outline: 'none',
-              background: 'white',
+              background: '#f9fafb',
+              transition: 'all 0.2s ease',
             }}
-            onFocus={(e) => e.target.style.borderColor = '#3b82f6'}
-            onBlur={(e) => e.target.style.borderColor = '#d1d5db'}
+            onFocus={(e) => {
+              e.target.style.borderColor = '#3b82f6';
+              e.target.style.background = 'white';
+              e.target.style.boxShadow = '0 0 0 3px rgba(59, 130, 246, 0.2)';
+            }}
+            onBlur={(e) => {
+              e.target.style.borderColor = '#d1d5db';
+              e.target.style.background = '#f9fafb';
+              e.target.style.boxShadow = 'none';
+            }}
           />
         </div>
 
         <div style={{ marginBottom: '1.5rem' }}>
-          <label style={{ display: 'block', fontWeight: '600', marginBottom: '0.3rem', color: '#1f2937', fontSize: '0.85rem' }}>Mot de passe</label>
+          <label style={{ display: 'block', fontWeight: '600', marginBottom: '0.4rem', color: '#374151', fontSize: '0.85rem' }}>Mot de passe</label>
           <input
             type="password"
             value={password}
@@ -132,16 +179,26 @@ const Login = () => {
             required
             style={{
               width: '100%',
-              padding: '0.5rem 0.75rem',
+              boxSizing: 'border-box',
+              padding: '0.75rem 1rem',
               borderRadius: '0.5rem',
-              border: '2px solid #d1d5db',
+              border: '1px solid #d1d5db',
               color: '#1f2937',
-              fontSize: '0.9rem',
+              fontSize: '0.95rem',
               outline: 'none',
-              background: 'white',
+              background: '#f9fafb',
+              transition: 'all 0.2s ease',
             }}
-            onFocus={(e) => e.target.style.borderColor = '#3b82f6'}
-            onBlur={(e) => e.target.style.borderColor = '#d1d5db'}
+            onFocus={(e) => {
+              e.target.style.borderColor = '#3b82f6';
+              e.target.style.background = 'white';
+              e.target.style.boxShadow = '0 0 0 3px rgba(59, 130, 246, 0.2)';
+            }}
+            onBlur={(e) => {
+              e.target.style.borderColor = '#d1d5db';
+              e.target.style.background = '#f9fafb';
+              e.target.style.boxShadow = 'none';
+            }}
           />
         </div>
 
@@ -150,24 +207,64 @@ const Login = () => {
           disabled={loading}
           style={{
             width: '100%',
-            padding: '0.6rem',
+            boxSizing: 'border-box',
+            padding: '0.8rem',
             background: '#1e3a8a',
             color: 'white',
             border: 'none',
             borderRadius: '0.5rem',
-            fontSize: '0.95rem',
+            fontSize: '1rem',
             fontWeight: '600',
             cursor: 'pointer',
             opacity: loading ? 0.7 : 1,
+            transition: 'background 0.2s',
           }}
+          onMouseEnter={(e) => !loading && (e.target.style.background = '#1e40af')}
+          onMouseLeave={(e) => !loading && (e.target.style.background = '#1e3a8a')}
         >
-          {loading ? 'Connexion...' : 'Se connecter'}
+          {loading ? 'Connexion en cours...' : 'Se connecter'}
         </button>
 
-        <div style={{ marginTop: '0.8rem', textAlign: 'center', fontSize: '0.75rem', color: '#6b7280' }}>
+        <div style={{ marginTop: '1rem', textAlign: 'center', fontSize: '0.75rem', color: '#6b7280' }}>
           Contactez l'administrateur pour vos identifiants.
         </div>
       </form>
+
+      {/* TEXTE EN BAS (Anglais) - EFFET VERRE DÉPOLI */}
+      <div style={{
+        position: 'absolute',
+        bottom: '40px',
+        left: '50%',
+        transform: 'translateX(-50%)',
+        zIndex: 3,
+        pointerEvents: 'none',
+      }}>
+        <div style={{
+          background: 'rgba(255, 255, 255, 0.1)',
+          backdropFilter: 'blur(12px)',
+          WebkitBackdropFilter: 'blur(12px)',
+          border: '1px solid rgba(255, 255, 255, 0.2)',
+          borderRadius: '50px',
+          padding: '15px 50px',
+          boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.3)',
+        }}>
+          <h3 style={{
+            color: 'white',
+            fontSize: 'clamp(1.2rem, 2.5vw, 1.8rem)',
+            fontWeight: '600',
+            letterSpacing: '5px',
+            textTransform: 'uppercase',
+            fontFamily: "'Inter', 'Segoe UI', sans-serif",
+            textShadow: '0 2px 10px rgba(0,0,0,0.5)',
+            margin: 0,
+            textAlign: 'center',
+            whiteSpace: 'nowrap',
+          }}>
+            Numerical office andremed
+          </h3>
+        </div>
+      </div>
+
     </div>
   );
 };
